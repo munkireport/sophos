@@ -69,7 +69,7 @@ def main():
     if os.path.isdir('/Applications/Sophos Endpoint.app'):
         result.update({'Installed': 'Sophos Central'})
     elif os.path.isdir('/Applications/Sophos/Sophos Endpoint.app'):
-        result.update({'Installed': 'Sophos Central (v10+)'})
+        result.update({'Installed': 'Sophos Central'})
     elif os.path.isdir('/Applications/Sophos Anti-Virus.app'):
         result.update({'Installed': 'Sophos Business'})
     else:
