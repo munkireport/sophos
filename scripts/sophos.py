@@ -18,6 +18,13 @@ def check_sophos_running():
     sp = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = sp.communicate()
 
+    if sp.returncode = 113:
+        # 10.x series with InterceptX uses com.sophos.scan.legacy - check for it
+        # instead if the original search doesn't find it.
+        cmd = ['/bin/launchctl', 'print', 'system/com.sophos.scan.legacy']
+        sp = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = sp.communicate()
+
     if 'state = running' in out:
         return True
     else:
