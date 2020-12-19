@@ -18,6 +18,12 @@ def check_sophos_running():
     sp = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = sp.communicate()
 
+    if sp.returncode == 113:
+        # 10.x series with InterceptX uses com.sophos.scan.legacy - check for it
+        # instead if the original search doesn't find it.
+        cmd = ['/bin/launchctl', 'print', 'system/com.sophos.scan.legacy']
+        sp = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
     if 'state = running' in out:
         return True
     else:
@@ -65,8 +71,10 @@ def main():
         os.makedirs(cachedir)
 
     result = {}
-    # check if Sophos is installed
-    if os.path.isdir('/Applications/Sophos Endpoint.app'):
+    # check if Sophos is installed, and check for InterceptX
+    if os.path.isdir('/Library/Sophos Anti-Virus/SophosCryptoGuardLegacy.app'):
+        result.update({'Installed': 'Sophos Central with InterceptX'})
+    elif os.path.isdir('/Applications/Sophos Endpoint.app'):
         result.update({'Installed': 'Sophos Central'})
     elif os.path.isdir('/Applications/Sophos/Sophos Endpoint.app'):
         result.update({'Installed': 'Sophos Central'})
