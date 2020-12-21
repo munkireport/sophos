@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Installed</key>
+	<string>Sophos Central with InterceptX</string>
+	<key>Running</key>
+	<false/>
+	<key>Versions</key>
+	<dict>
+		<key>Engine version</key>
+		<string>3.79.0</string>
+		<key>Product version</key>
+		<string>10.0.1</string>
+		<key>User interface version</key>
+		<string>2.07.379</string>
+		<key>Virus data version</key>
+		<string>5.80</string>
+	</dict>
+</dict>
+</plist>

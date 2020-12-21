@@ -23,6 +23,7 @@ def check_sophos_running():
         # instead if the original search doesn't find it.
         cmd = ['/bin/launchctl', 'print', 'system/com.sophos.scan.legacy']
         sp = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = sp.communicate()
 
     if 'state = running' in out:
         return True
